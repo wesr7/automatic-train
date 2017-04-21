@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
+import * as cors from 'cors';
 
 import config from './config/db';
 import Product from './models/product.model';
@@ -10,9 +11,8 @@ import setRoutes from './routes';
 
 const app = express();
 
-
 app.set('port', (process.env.PORT || 3000));
-
+app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
@@ -33,7 +33,6 @@ db.once('open', () => {
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
-
 
   app.listen(app.get('port'), () => {
     console.log('Angular 2 Full Stack listening on port ' + app.get('port'));

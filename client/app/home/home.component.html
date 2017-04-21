@@ -8,10 +8,10 @@
 <!--<h4 *ngIf="auth.authenticated()">You are logged in</h4>
 <h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>-->
 
-<div class="card" *ngIf="!isEditing">
-        <h4 class="card-header">Add new product</h4>
+<div class="card">
+        <h4 [hidden]="Submitted"  class="card-header">Add new product</h4>
         <div class="card-block">
-                <form class="form-inline" [formGroup]="addProductForm" (ngSubmit)="addProduct()" style="text-align:center">
+                <form  [hidden]="Submitted" class="form-inline" [formGroup]="addProductForm" (ngSubmit)="addProduct()" style="text-align:center">
                         <div class="form-group">
                                 <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
                          </div>
@@ -26,9 +26,12 @@
                         </div>
                         <button class="btn btn-primary" type="submit" [disabled]="!addProductForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
                 </form>
+                <div [hidden]="!Submitted" class="col-xs-12 text-center">
+                        <h1>Thanks For Your Submission!</h1>
+                </div>
         </div>
 </div>
-<div class="card" >
+<!--<div class="card" >
         <h4 class="card-header">{{ product.name }} Product</h4>
         <div class="card-block">
                 <table class="table table-bordered table-striped">
@@ -81,5 +84,5 @@
                         </tbody>
                 </table>
         </div>
-</div>
+</div>-->
 

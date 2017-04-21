@@ -40,4 +40,5 @@ export class AdminComponent implements OnInit {
                 this.isDetails = true
         }
 
+
 }

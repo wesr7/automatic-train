@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   product = {};
   isEditing = false;
 
+  Submitted = false;
+
 addProductForm: FormGroup;
   name = new FormControl('', Validators.required);
   email= new FormControl('', Validators.required);
@@ -83,49 +85,11 @@ addProductForm: FormGroup;
       res => {
         const newProduct = res.json();
         this.products.push(newProduct);
-        this.addProductForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
-        this.product = newProduct;
+        this.Submitted = true;
+        this.toast.setMessage('Thank You For Your Submission.', 'success');
       },
       error => console.log(error)
     );
-  }
-
-  enableEditing(product) {
-    this.isEditing = true;
-    this.product = product;
-  }
-
-  cancelEditing() {
-    this.isEditing = false;
-    this.product = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the products to reset the editing
-    this.getProducts();
-  }
-
-  editProduct(product) {
-    this.dataService.editProduct(product).subscribe(
-      res => {
-        this.isEditing = false;
-        this.product = product;
-        this.toast.setMessage('item edited successfully.', 'success');
-      },
-      error => console.log(error)
-    );
-  }
-
-  deleteProduct(product) {
-    if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.dataService.deleteProduct(product).subscribe(
-        res => {
-          const pos = this.products.map(elem => { return elem._id; }).indexOf(product._id);
-          this.products.splice(pos, 1);
-          this.toast.setMessage('item deleted successfully.', 'success');
-        },
-        error => console.log(error)
-      );
-    }
   }
 
 }

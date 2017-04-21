@@ -36,29 +36,4 @@ export class DataService {
   deleteProduct(product): Observable<any> {
     return this.http.delete(`/api/product/${product._id}`, this.options);
   }
-
-  getInventorForms(): Observable<any> {
-    return this.authHttp.get('/api/inventorforms').map(res => res.json());
-  }
-
-  countInventorForms(): Observable<any> {
-    return this.http.get('/api/inventorforms/count').map(res => res.json());
-  }
-
-  addInventorForm(inventorform): Observable<any> {
-    return this.http.post('/api/inventorform', JSON.stringify(inventorform), this.options);
-  }
-
-  getInventorForm(inventorform): Observable<any> {
-    return this.http.get(`/api/inventorform/${inventorform._id}`, this.options);
-  }
-
-  editInventorForm(inventorform): Observable<any> {
-    return this.http.put(`/api/inventorform/${inventorform._id}`, JSON.stringify(inventorform), this.options);
-  }
-
-  deleteInventorForm(inventorform): Observable<any> {
-    return this.http.delete(`/api/inventorform/${inventorform._id}`, this.options);
-  }
-
 }
