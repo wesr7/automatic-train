@@ -1,5 +1,5 @@
 const config = {
-  url : 'mongodb://localhost:27017/test'
+  url : 'mongodb://heroku_j3zkdqnw:heroku_j3zkdqnw@ds111851.mlab.com:11851/heroku_j3zkdqnw'
 };
 
 export default config;

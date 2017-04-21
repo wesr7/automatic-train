@@ -8,6 +8,6 @@ import { Auth } from './auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-        constructor(private auth: Auth) {}
-        
+        constructor(public auth: Auth) {}
+
  }
