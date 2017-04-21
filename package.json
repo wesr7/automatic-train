@@ -17,6 +17,9 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines": {
+    "node": "7.4.0"
+  },
   "dependencies": {
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
