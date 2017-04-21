@@ -14,7 +14,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 export class HomeComponent implements OnInit {
 
   products = [];
-  isLoading = true;
+  // isLoading = true;
 
   product = {};
   isEditing = false;
@@ -69,15 +69,13 @@ addProductForm: FormGroup;
 
   getProducts() {
     this.dataService.getProducts().subscribe(
-      data => this.products = data,
-      () => this.isLoading = false
+      data => this.products = data
     );
   }
 
   getProduct(product) {
     this.dataService.getProduct(product).subscribe(
-      data => this.product = data,
-      () => this.isLoading = false
+      data => this.product = data
     )
   }
   addProduct() {
